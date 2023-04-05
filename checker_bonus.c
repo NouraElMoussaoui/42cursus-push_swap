@@ -6,11 +6,18 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:20:41 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/16 15:54:45 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:01:15 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	if_error(t_stack **a, t_stack **b, char *line)
+{
+	free_stack(a);
+	free_stack(b);
+	oops(line, NULL);
+}
 
 void	add_to_list(char **arr, t_stack **a)
 {
@@ -57,7 +64,7 @@ void	make_action(t_stack **a, t_stack **b, char *line)
 	else if (ft_strcmp(line, "pb\n") == 0)
 		push(a, b);
 	else
-		oops(line, NULL);
+		if_error(a, b, line);
 }
 
 void	get_line(t_stack **a, t_stack **b)

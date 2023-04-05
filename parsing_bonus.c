@@ -6,13 +6,13 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 08:30:44 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/17 09:54:16 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:49:51 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	double_args(char **arr, char *st)
+void	check_duplicate(char **arr)
 {
 	int	i;
 	int	j;
@@ -24,7 +24,7 @@ void	double_args(char **arr, char *st)
 		while (arr[j])
 		{
 			if (ft_atoi(arr[i]) == ft_atoi(arr[j]))
-				oops(st, arr);
+				oops(NULL, arr);
 			else
 				j++;
 		}
@@ -49,7 +49,7 @@ void	check_space(char *av, char *s)
 		oops(s, NULL);
 }
 
-void	check_args(char **arr, char *s)
+void	check_args(char **arr)
 {
 	int	j;
 	int	k;
@@ -64,7 +64,7 @@ void	check_args(char **arr, char *s)
 		{
 			if (!ft_isdigit(arr[j][k])
 			|| ft_atoi(arr[j]) > 2147483647 || ft_atoi(arr[j]) < -2147483648)
-				oops(s, arr);
+				oops(NULL, arr);
 			k++;
 		}
 		j++;

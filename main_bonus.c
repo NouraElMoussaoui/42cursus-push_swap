@@ -6,17 +6,18 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:02:11 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/17 09:52:36 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:01:21 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	to_use(char **arr, t_stack **a, t_stack **b, char *s)
+void	to_use(char **arr, t_stack **a, t_stack **b)
 {
-	check_args(arr, s);
-	double_args(arr, s);
+	check_args(arr);
+	check_duplicate(arr);
 	add_to_list(arr, a);
+	free_arr(arr);
 	get_line(a, b);
 	check_result(a, b);
 }
@@ -29,9 +30,10 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 
+	i = 1;
 	a = NULL;
 	b = NULL;
-	i = 1;
+	s = NULL;
 	if (ac > 1)
 	{
 		while (av[i])
@@ -42,7 +44,9 @@ int	main(int ac, char **av)
 			i++;
 		}
 		arr = ft_split(s, ' ');
-		to_use(arr, &a, &b, s);
-		free_all(s, arr, &a, &b);
+		free(s);
+		to_use(arr, &a, &b);
+		free_stack(&a);
+		free_stack(&b);
 	}
 }

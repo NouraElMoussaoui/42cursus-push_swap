@@ -6,7 +6,7 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:09:42 by nel-mous          #+#    #+#             */
-/*   Updated: 2022/10/21 15:04:56 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:04:22 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+		return (NULL);
 	if (len > ft_strlen(s))
 		sub = (char *)malloc (ft_strlen(s) - start + 1);
 	else

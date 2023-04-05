@@ -6,7 +6,7 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 10:13:28 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/16 15:59:22 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/19 08:43:35 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,6 @@ int	if_sorted(t_stack *a)
 	return (1);
 }
 
-void	oops(char *s, char **arr)
-{
-	int	j;
-
-	j = 0;
-	write(2, "Error\n", 6);
-	if (s)
-		free(s);
-	if (arr != NULL)
-	{
-		while (arr[j] != 0)
-			free(arr[j++]);
-		free(arr[j]);
-		free(arr);
-	}
-	exit(0);
-}
-
 void	free_stack(t_stack **a)
 {
 	t_stack	*temp;
@@ -52,26 +34,28 @@ void	free_stack(t_stack **a)
 	while (*a)
 	{
 		temp = (*a)->next;
-		(*a)->content = 0;
 		free(*a);
 		*a = temp;
 	}
 }
 
-void	free_all(char *s, char **arr, t_stack **a, t_stack **b)
+void	free_arr(char **arr)
 {
 	int	j;
 
 	j = 0;
-	if (s)
-		free(s);
-	if (arr)
+	if (arr != NULL)
 	{
 		while (arr[j] != 0)
 			free(arr[j++]);
-		free(arr[j]);
 		free(arr);
 	}
-	free_stack(a);
-	free_stack(b);
+}
+
+void	oops(char *s, char **arr)
+{
+	write(2, "Error\n", 6);
+	free(s);
+	free_arr(arr);
+	exit(0);
 }

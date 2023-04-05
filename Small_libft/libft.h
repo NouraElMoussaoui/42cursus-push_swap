@@ -6,7 +6,7 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:43:50 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/17 09:03:03 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:04:35 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				ft_isdigit(int c);
 void			ft_putstr(char *str);
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *a);
-long long 		ft_atoi(const char *s);
+long long		ft_atoi(const char *s);
 char			*ft_strjoin(char *s1, char *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 t_stack			*ft_lstnew(int content);

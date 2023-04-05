@@ -6,13 +6,13 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:27:23 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/16 16:05:27 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:50:04 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	double_args(char **arr, char *st)
+void	check_duplicate(char **arr)
 {
 	int	i;
 	int	j;
@@ -24,7 +24,7 @@ void	double_args(char **arr, char *st)
 		while (arr[j])
 		{
 			if (ft_atoi(arr[i]) == ft_atoi(arr[j]))
-				oops(st, arr);
+				oops(NULL, arr);
 			else
 				j++;
 		}
@@ -32,24 +32,24 @@ void	double_args(char **arr, char *st)
 	}
 }
 
-void	check_space(char *s, char *st)
+void	check_space(char *av, char *s)
 {
 	int	j;
 	int	len;
 
 	len = 0;
 	j = 0;
-	while (s[j])
+	while (av[j])
 	{
-		if (s[j] != ' ')
+		if (av[j] != ' ')
 			len++;
 		j++;
 	}
 	if (len == 0)
-		oops(st, NULL);
+		oops(s, NULL);
 }
 
-void	check_args(char **arr, char *s)
+void	check_args(char **arr)
 {
 	int	j;
 	int	k;
@@ -64,7 +64,7 @@ void	check_args(char **arr, char *s)
 		{
 			if (!ft_isdigit(arr[j][k])
 			|| ft_atoi(arr[j]) > 2147483647 || ft_atoi(arr[j]) < -2147483648)
-				oops(s, arr);
+				oops(NULL, arr);
 			k++;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: nel-mous <nel-mous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 10:27:32 by nel-mous          #+#    #+#             */
-/*   Updated: 2023/03/17 09:21:04 by nel-mous         ###   ########.fr       */
+/*   Updated: 2023/03/19 08:36:16 by nel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,15 @@ void	list_sorted(t_stack **a_sort)
 	t_sort = *a_sort;
 }
 
-void	to_use(char **arr, t_stack **a, t_stack **b, char *s)
+void	to_use(char **arr, t_stack **a, t_stack **b)
 {
 	t_stack	*a_sort;
 
 	a_sort = NULL;
-	check_args(arr, s);
-	double_args(arr, s);
+	check_args(arr);
+	check_duplicate(arr);
 	add_to_list(arr, a, &a_sort);
+	free_arr(arr);
 	list_sorted(&a_sort);
 	select_sort(a, b, &a_sort);
 	free_stack(&a_sort);
@@ -91,6 +92,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	i = 1;
+	s = NULL;
 	if (ac > 1)
 	{
 		while (av[i])
@@ -101,7 +103,9 @@ int	main(int ac, char **av)
 			i++;
 		}
 		arr = ft_split(s, ' ');
-		to_use(arr, &a, &b, s);
-		free_all(s, arr, &a, &b);
+		free(s);
+		to_use(arr, &a, &b);
+		free_stack(&a);
+		free_stack(&b);
 	}
 }
